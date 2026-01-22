@@ -1,0 +1,136 @@
+base_details_1.Date
+base_details_1.Patient_ID
+base_details_1.Patient_Name
+base_details_1.DOB
+base_details_1.Phone_No
+base_details_1.Email
+base_details_1.Occupation
+base_details_1.Residence
+base_details_1.Qualification
+base_details_1.Date_of_symptoms
+
+base_details_1.Date_of_diagnosis
+base_details_1.Initial_symptoms
+base_details_1.ATT_use
+base_details_1.Duration_of_ATT
+base_details_1.TB_family_member
+base_details_1.Mantoux
+base_details_1.BCG_scar
+base_details_1.Chest_Xray
+base_details_1.QFT
+base_details_1.Smoking
+
+base_details_1.Hbsag
+base_details_1.HCV_Ab
+base_details_1.HIV
+base_details_1.Family_history_IBD
+base_details_1.Erythema_nodousum
+base_details_1.Pyoderma_gangerenosum
+base_details_1.Oral_ulcers
+base_details_1.Deep_vein_thrombosis
+base_details_1.Red_eye
+base_details_1.PSC
+
+base_details_1.Peripheral_joint_arthritis
+base_details_1.Peripheral_joint_arthralgia
+base_details_1.Axial_arthritis
+base_details_1.Axial_arthralgia
+base_details_1.Comorb_DM
+base_details_1.Comorb_HT
+base_details_1.Comorb_Asthma
+base_details_1.Comorb_COPD
+base_details_1.Comorb_IHD
+base_details_1.Any_other_illness
+
+
+
+            // Prepare CSV file writer
+          //  FileWriter writer = new FileWriter(csvFilePath);
+            
+            File tsvFile = new File("data.tsv");
+
+            BufferedWriter writer = new BufferedWriter(new FileWriter(tsvFile));
+           /** // Get column names and write to CSV file
+            ResultSetMetaData metaData = rs.getMetaData();
+            int columnCount = metaData.getColumnCount();
+
+            // Write headers (column names) to CSV file
+            for (int i = 1; i <= columnCount; i++) {
+                writer.append(metaData.getColumnName(i));
+                if (i < columnCount) writer.append(",");
+            }
+            writer.append("\n");
+
+            // Write data rows to CSV file
+            while (rs.next()) {
+                for (int i = 1; i <= columnCount; i++) {
+                    writer.append(rs.getString(i));
+                    if (i < columnCount) writer.append(",");
+                }
+                writer.append("\n");
+            }
+
+            // Close the writer
+            writer.flush();
+            writer.close();
+
+            JOptionPane.showMessageDialog(null,"Data has been written to " + csvFilePath);**/
+           
+            ResultSetMetaData metaData = rs.getMetaData();
+            int columnCount = metaData.getColumnCount();
+
+            // Write the column headers to the TSV file
+            for (int i = 1; i <= columnCount; i++) {
+                writer.write(metaData.getColumnName(i));
+                if (i < columnCount) {
+                    writer.write("\t");  // Tab-separated columns
+                }
+            }
+            writer.newLine();  // New line after column names
+
+            // Write the data rows to the TSV file
+            while (rs.next()) {
+                for (int i = 1; i <= columnCount; i++) {
+                    String value = rs.getString(i);
+                    // Handle null values and escape special characters if needed
+                    writer.write(value != null ? value : "");
+                    if (i < columnCount) {
+                        writer.write("\t");  // Tab-separated values
+                    }
+                }
+                writer.newLine();  // New line after each row
+            }
+
+            System.out.println("Data exported to TSV successfully: " + tsvFile.getAbsolutePath());
+
+
+/*try {
+            // Open a file chooser to select the location and name of the CSV file
+            JFileChooser fileChooser = new JFileChooser();
+            fileChooser.setDialogTitle("Save CSV File");
+            int userSelection = fileChooser.showSaveDialog(null);
+
+            // If the user selects a file
+            if (userSelection == JFileChooser.APPROVE_OPTION) {
+                File fileToSave = fileChooser.getSelectedFile();
+                if (!fileToSave.getName().endsWith(".csv")) {
+                    fileToSave = new File(fileToSave.getAbsolutePath() + ".csv");
+                }
+
+                // Write the headers (column names)
+                try ( // Write the data to the CSV file
+                        BufferedWriter writer = new BufferedWriter(new FileWriter(fileToSave))) {
+                    // Write the headers (column names)
+                    writer.write("Id,Name,DOB,Phone,Email,Occupation,Residence");
+                    writer.newLine();
+                    // Write the data (values from the fields)
+                    writer.write(String.format("\"%s\",\"%s\",\"%s\",\"%s\",\"%s\",\"%s\",\"%s\"", id, name, dob, phone, email, occp, resi));
+                    writer.newLine();
+                    // Close the writer
+                }
+                JOptionPane.showMessageDialog(null, "CSV Data exported successfully!");
+            }
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(null, "Error saving CSV file: " + ex.getMessage());
+        }*/
+        

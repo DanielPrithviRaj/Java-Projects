@@ -1,0 +1,47 @@
+import com.itextpdf.io.font.constants.StandardFonts;
+import com.itextpdf.io.image.ImageDataFactory;
+import com.itextpdf.kernel.font.PdfFont;
+import com.itextpdf.kernel.font.PdfFontFactory;
+import java.sql.SQLException;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
+import com.mycompany.ibd.*;
+import java.sql.*;
+import javax.swing.JOptionPane;
+import javax.swing.JScrollBar;
+import java.util.List;
+import javax.swing.text.AbstractDocument;
+import javax.swing.text.DocumentFilter;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.io.IOException;
+import javax.swing.text.AttributeSet;
+import javax.swing.text.BadLocationException;
+import com.itextpdf.kernel.pdf.PdfDocument;
+import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.layout.Document;
+import com.itextpdf.layout.element.IBlockElement;
+import com.itextpdf.layout.element.Paragraph;
+import java.awt.image.BufferedImage;
+import java.io.FileOutputStream;
+import javax.swing.JFrame;
+import com.itextpdf.layout.element.Image;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.SwingConstants;
+import com.itextpdf.kernel.font.PdfFontFactory;
+import com.itextpdf.io.font.constants.StandardFonts;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import javax.swing.JFileChooser;
+
+
+how to do alignment in java pdf document writer data in a single
+
+// document.add(new Paragraph("Duration of ATT(months):" + durationATT));
